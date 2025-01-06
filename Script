@@ -1,6 +1,6 @@
 # Kaggle API anahtar dosyasını yükleme
 from google.colab import files
-files.upload()  # Bu hücreyi çalıştırdıktan sonra 'kaggle.json' dosyasını yükleme
+files.upload()  
 
 # Kaggle API anahtar dosyasını doğru yere taşıma
 !mkdir -p ~/.kaggle
@@ -10,7 +10,6 @@ files.upload()  # Bu hücreyi çalıştırdıktan sonra 'kaggle.json' dosyasın�
 # Kaggle Titanic veri setini indirme
 !kaggle datasets download -d heptapod/titanic
 
-# İndirilen zip dosyasını açma
 !unzip titanic.zip
 
 # Gerekli kütüphaneleri yükleme
@@ -25,15 +24,13 @@ from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_sc
 
 
 # Veri setini okuma
-df = pd.read_csv('/content/train_and_test2.csv')  # Titanic veri seti dosya adı 'train_and_test2.csv'
+df = pd.read_csv('/content/train_and_test2.csv') 
 
-# Veri setindeki öznitelikleri gözden geçirme
 print(df.info())
 print(df.describe())
 print(df.head())
 
-# Özniteliklerin açıklanması
-# Örneğin:
+# Özniteliklerin tanımları
 # - PassengerId: Yolcu ID'si
 # - Survived: Hayatta kalma (0 = Hayır, 1 = Evet)
 # - Pclass: Yolcu sınıfı (1 = 1. sınıf, 2 = 2. sınıf, 3 = 3. sınıf)
@@ -47,11 +44,8 @@ print(df.head())
 # - Cabin: Kabin numarası
 # - Embarked: Biniş limanı (C = Cherbourg, Q = Queenstown, S = Southampton)
 
-# Veri setindeki ilk birkaç satırı gözden geçirme
-print(df.head())
-
 # Kategorik özniteliklerin belirlenmesi
-categorical_features = ['Sex', 'Embarked']  # Kategorik öznitelikler
+categorical_features = ['Sex', 'Embarked'] 
 
 # Kategorik özniteliklerin sayısal hale dönüştürülmesi
 le = LabelEncoder()
@@ -86,8 +80,7 @@ for k in knn_neighbors:
     knn = KNeighborsClassifier(n_neighbors=k)
     knn.fit(X_train, y_train)
     y_pred = knn.predict(X_test)
-    
-    # Başarım değerlerinin hesaplanması
+
     accuracy = accuracy_score(y_test, y_pred)
     precision = precision_score(y_test, y_pred)
     recall = recall_score(y_test, y_pred)
@@ -103,7 +96,6 @@ for layers in mlp_layers:
     mlp.fit(X_train, y_train)
     y_pred = mlp.predict(X_test)
     
-    # Başarım değerlerinin hesaplanması
     accuracy = accuracy_score(y_test, y_pred)
     precision = precision_score(y_test, y_pred)
     recall = recall_score(y_test, y_pred)
@@ -111,12 +103,11 @@ for layers in mlp_layers:
     
     print(f'MLP (layers={layers}) - Accuracy: {accuracy}, Precision: {precision}, Recall: {recall}, F1: {f1}')
 
-# Naive Bayes için varsayılan parametreler kullanılır
+# Naive Bayes için varsayılan parametreler 
 nb = GaussianNB()
 nb.fit(X_train, y_train)
 y_pred = nb.predict(X_test)
 
-# Başarım değerlerinin hesaplanması
 accuracy = accuracy_score(y_test, y_pred)
 precision = precision_score(y_test, y_pred)
 recall = recall_score(y_test, y_pred)
