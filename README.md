@@ -1,106 +1,91 @@
-# TitanicDatasetML
-Bu proje, Titanic yolcularının hayatta kalma oranlarını tahmin etmek amacıyla gerçekleştirilmiştir.
+# Titanic Yolcu Hayatta Kalma Tahmini Projesi
 
-KNN (K-Nearest Neighbors):
-K=3, K=7 ve K=11 komşuluk değerleri için uygulanarak başarı metrikleri hesaplandı.
-MLP (Multi Layer Perceptron):
-1, 2 ve 3 gizli katman konfigürasyonları ile uygulanarak başarı metrikleri hesaplandı.
-Naive Bayes:
-Varsayılan parametrelerle uygulanarak başarı metrikleri hesaplandı.
+Bu proje, Titanic veri kümesini kullanarak yolcuların hayatta kalma durumlarını tahmin etmeyi amaçlamaktadır. Projede K-Nearest Neighbors (KNN), Multi Layer Perceptron (MLP) ve Naive Bayes (NB) sınıflandırma algoritmaları kullanılmış ve performansları karşılaştırılmıştır.
 
-Titanic Yolcu Hayatta Kalma Tahmini Projesi
-Bu proje, Titanic yolcularının hayatta kalma oranlarını tahmin etmek amacıyla çeşitli makine öğrenimi algoritmalarını kullanarak gerçekleştirildi. Projenin adımları ve kullanılan parametreler aşağıdaki gibidir:
+## İçindekiler
+- [Proje Hakkında](#proje-hakkında)
+- [Veri Kümesi](#veri-kümesi)
+- [Özniteliklerin Tanıtımı](#özniteliklerin-tanıtımı)
+- [Veri Ön İşleme](#veri-ön-işleme)
+- [Modelleme ve Değerlendirme](#modelleme-ve-değerlendirme)
+- [Sonuçlar](#sonuçlar)
+- [Nasıl Çalıştırılır](#nasıl-çalıştırılır)
+- [Lisans](#lisans)
 
-Veri Kümesinin Seçilmesi ve Yüklenmesi:
+## Proje Hakkında
+Bu proje, Titanic yolcu veri kümesini kullanarak yolcuların hayatta kalma durumlarını tahmin etmeyi amaçlamaktadır. Projede üç farklı sınıflandırma algoritması kullanılmış ve bu algoritmaların performansları accuracy, precision, recall ve F1-score metrikleri ile değerlendirilmiştir.
 
-Titanic veri seti, Kaggle platformundan indirildi ve train_and_test2.csv dosyası kullanılarak analiz edildi.
-Veri Kümesinin İncelenmesi ve Özniteliklerin Tanıtılması:
+## Veri Kümesi
+Proje için Kaggle'dan Titanic veri kümesi kullanılmıştır. Veri kümesini [buradan](https://www.kaggle.com/datasets/heptapod/titanic) indirebilirsiniz.
 
-Veri setindeki öznitelikler incelendi ve özniteliklerin veri tipleri, özet istatistikleri ve ilk birkaç satırı gözden geçirildi.
-Kategorik Değerlerin Sayısal Hale Dönüştürülmesi:
+## Özniteliklerin Tanıtımı
+Veri kümesi aşağıdaki öznitelikleri içermektedir:
 
-Kategorik öznitelikler (Sex ve Embarked) Label Encoder kullanılarak sayısal değerlere dönüştürüldü.
-Veri Setinin Hazırlanması ve Normalize Edilmesi:
+- **PassengerId**: Yolcu ID'si
+- **Survived**: Hayatta kalma (0 = Hayır, 1 = Evet)
+- **Pclass**: Yolcu sınıfı (1 = 1. sınıf, 2 = 2. sınıf, 3 = 3. sınıf)
+- **Name**: Yolcunun adı
+- **Sex**: Cinsiyet
+- **Age**: Yaş
+- **SibSp**: Gemideki kardeş/eş sayısı
+- **Parch**: Gemideki ebeveyn/çocuk sayısı
+- **Ticket**: Bilet numarası
+- **Fare**: Bilet ücreti
+- **Cabin**: Kabin numarası
+- **Embarked**: Biniş limanı (C = Cherbourg, Q = Queenstown, S = Southampton)
 
-Hedef değişken (2urvived) ve bağımsız değişkenler ayrıldı.
-Veriler eğitim ve test setlerine bölündü.
-StandardScaler kullanılarak öznitelikler normalize edildi.
-Makine Öğrenimi Algoritmalarının Uygulanması:
+## Veri Ön İşleme
+- Kategorik öznitelikler sayısal değerlere dönüştürülmüştür.
+- Veriler `StandardScaler` kullanılarak normalize edilmiştir.
 
-K-Nearest Neighbors (KNN):
-K=3, K=7 ve K=11 komşuluk değerleri için KNN algoritması uygulandı.
-Her bir model için başarı metrikleri (accuracy, precision, recall, F1-score) hesaplandı.
-Multi Layer Perceptron (MLP):
-1 gizli katman (32 nöron), 2 gizli katman (32’şer nöron) ve 3 gizli katman (32’şer nöron) konfigürasyonları ile MLP algoritması uygulandı.
-Her bir model için başarı metrikleri hesaplandı.
-Naive Bayes (NB):
-Varsayılan parametrelerle Naive Bayes algoritması uygulandı.
-Başarı metrikleri hesaplandı.
-Algoritmaların Karşılaştırılması:
+## Modelleme ve Değerlendirme
+Projede kullanılan algoritmalar ve konfigurasyonları:
 
-Tüm algoritmaların başarı metrikleri (accuracy, precision, recall, F1-score) karşılaştırıldı.
-En iyi performansı gösteren algoritma belirlendi ve sonuçlar detaylandırıldı.
+- **KNN (K-Nearest Neighbors)**: K=3, 7 ve 11 komşuluk değerleri
+- **MLP (Multi Layer Perceptron)**: 1 gizli katman (32 nöron), 2 gizli katman (32’şer nöron) ve 3 gizli katman (32’şer nöron)
+- **Naive Bayes**: Varsayılan parametreler
 
+Her algoritmanın performansı accuracy, precision, recall ve F1-score metrikleri kullanılarak değerlendirilmiştir.
 
-a. K-Nearest Neighbors (KNN)
-KNN algoritması, farklı komşuluk değerleri (k=3, k=7, k=11) kullanılarak uygulanmıştır.
+## Sonuçlar
+- En yüksek accuracy değerine sahip algoritma: **KNN (k=11)** - 0.8817
+- En yüksek precision değerine sahip algoritma: **KNN (k=11)** - 0.8750
+- En yüksek recall değerine sahip algoritma: **MLP (32, 32)** - 0.7123
+- En yüksek F1 Score değerine sahip algoritma: **KNN (k=11)** - 0.7597
 
-KNN (k=3):
+Genel olarak en iyi performansı gösteren algoritma **KNN (k=11)** olmuştur.
 
-Accuracy: 0.8397
-Precision: 0.7246
-Recall: 0.6849
-F1 Score: 0.7042
-KNN (k=7):
+## Nasıl Çalıştırılır
+1. Proje dosyalarını indirin ve gerekli kütüphaneleri yükleyin.
+2. Kaggle API anahtarınızı `kaggle.json` dosyası olarak proje dizinine ekleyin.
+3. Titanic veri kümesini indirin ve proje dizinine çıkarın.
+4. `titanic_classification.py` dosyasını çalıştırarak modelleri eğitin ve değerlendirin.
 
-Accuracy: 0.8702
-Precision: 0.8305
-Recall: 0.6712
-F1 Score: 0.7424
-KNN (k=11):
+```python
+# Kaggle API anahtar dosyasını yükleme
+from google.colab import files
+files.upload()  # Bu hücreyi çalıştırdıktan sonra 'kaggle.json' dosyasını yükleyin
 
-Accuracy: 0.8817
-Precision: 0.8750
-Recall: 0.6712
-F1 Score: 0.7597
+# Kaggle API anahtar dosyasını doğru yere taşıma
+!mkdir -p ~/.kaggle
+!cp kaggle.json ~/.kaggle/
+!chmod 600 ~/.kaggle/kaggle.json
 
-b. Multi Layer Perceptron (MLP)
-MLP algoritması, farklı katman konfigürasyonları (32, 32-32, 32-32-32) kullanılarak uygulanmıştır.
+# Kaggle Titanic veri setini indirme
+!kaggle datasets download -d heptapod/titanic
 
-MLP (32):
+# İndirilen zip dosyasını açma
+!unzip titanic.zip
 
-Accuracy: 0.8588
-Precision: 0.8000
-Recall: 0.6575
-F1 Score: 0.7218
-MLP (32, 32):
+# Gerekli kütüphaneleri yükleme ve model kodları
+import pandas as pd
+import numpy as np
+from sklearn.preprocessing import LabelEncoder, StandardScaler
+from sklearn.model_selection import train_test_split
+from sklearn.neighbors import KNeighborsClassifier
+from sklearn.neural_network import MLPClassifier
+from sklearn.naive_bayes import GaussianNB
+from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score
 
-Accuracy: 0.8588
-Precision: 0.7647
-Recall: 0.7123
-F1 Score: 0.7376
-MLP (32, 32, 32):
-
-Accuracy: 0.8397
-Precision: 0.7246
-Recall: 0.6849
-F1 Score: 0.7042
-Not: MLP modelleri, maksimum iterasyon (500) ulaşmasına rağmen yakınsama sağlamamıştır.
-
-c. Naive Bayes
-Naive Bayes algoritması varsayılan parametrelerle uygulanmıştır.
-
-Naive Bayes:
-Accuracy: 0.7939
-Precision: 0.6462
-Recall: 0.5753
-F1 Score: 0.6087
-
-Analiz ve Yorum
-En Yüksek Accuracy Değerine Sahip Algoritma: KNN (k=11) - 0.8817
-En Yüksek Precision Değerine Sahip Algoritma: KNN (k=11) - 0.8750
-En Yüksek Recall Değerine Sahip Algoritma: MLP (32, 32) - 0.7123
-En Yüksek F1 Score Değerine Sahip Algoritma: KNN (k=11) - 0.7597
-Bu sonuçlara göre, genel olarak en iyi performansı gösteren algoritma KNN (k=11) olmuştur. MLP ve Naive Bayes algoritmaları da iyi performans göstermiştir, ancak KNN (k=11) en yüksek değerlere ulaşmıştır.
-
-
+# Veri setini okuma ve ön işleme adımları
+df = pd.read_csv('/content/train_and_test2.csv')
