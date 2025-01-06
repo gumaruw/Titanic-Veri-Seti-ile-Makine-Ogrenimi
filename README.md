@@ -1,4 +1,4 @@
-# Titanic Yolcu Hayatta Kalma Tahmini Projesi
+# Titanic Veri Seti ile Makine Öğrenimi
 
 Bu proje, Titanic veri kümesini kullanarak yolcuların hayatta kalma durumlarını tahmin etmeyi amaçlamaktadır. Projede K-Nearest Neighbors (KNN), Multi Layer Perceptron (MLP) ve Naive Bayes (NB) sınıflandırma algoritmaları kullanılmış ve performansları karşılaştırılmıştır.
 
