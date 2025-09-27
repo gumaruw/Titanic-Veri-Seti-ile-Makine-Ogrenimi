@@ -1,6 +1,6 @@
 # Titanic Survival Prediction
 
-This project predicts passenger survival on the Titanic using machine learning. Three classification algorithms are applied and compared: **K-Nearest Neighbors (KNN)**, **Multi Layer Perceptron (MLP)**, and **Naive Bayes (NB)**.
+This project predicts passenger survival on the Titanic. Three classification algorithms are applied and compared: **K-Nearest Neighbors (KNN)**, **Multi Layer Perceptron (MLP)**, and **Naive Bayes (NB)**.
 
 ---
 
